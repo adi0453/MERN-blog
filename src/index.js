@@ -3,12 +3,14 @@ import ReactDOM from "react-dom/client";
 import AddBlog, { blogAction } from "./components/AddBlog";
 import NavigationBar from "./components/NavigationBar";
 import Contact from "./components/Contact";
-import Home, { blogLoader } from "./components/Home";
+import Home, { allBlogsLoader } from "./components/Home";
 import Authenticate from "./components/Authenticate";
 import SignUp, { signupAction } from "./components/SignUp";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login, { loginAction } from "./components/Login";
+import Blog, { blogLoader, blogDeleteAction } from "./components/Blog";
 // import {signUp as userAction } from './backend'
+import Edit, {editLoader, blogEditAction} from "./components/Edit";
 
 const router = createBrowserRouter([
   {
@@ -25,9 +27,24 @@ const router = createBrowserRouter([
         element: <Contact />,
       },
       {
-        loader: blogLoader,
+        loader: allBlogsLoader,
         path: "home",
         element: <Home />,
+      },
+      {
+        path: "home/:blogId",
+        element: <Blog />,
+        loader: blogLoader,
+      },
+      {
+        path: "home/:blogId/edit",
+        element: <Edit />,
+        action: blogEditAction,
+        loader: editLoader
+      },
+      {
+        path: "home/:blogId/delete",
+        loader: blogDeleteAction,
       },
       {
         path: "auth",
@@ -55,10 +72,3 @@ root.render(
     <RouterProvider router={router} />
   </React.StrictMode>
 );
-
-// ReactDOM.render(
-//   document.getElementById("root"),
-//   <>
-//   <h1>This is my react app</h1>
-//   </>
-// )

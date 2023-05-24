@@ -128,6 +128,53 @@ app.get("/notes", async (req, res) => {
   }
 });
 
+app.get("/notes/:noteId", async (req, res) => {
+  if (req.isAuthenticated()) {
+    // req.params.noteId
+    const user = req.user.notes;
+    user.forEach((note) => {
+      if (note._id == req.params.noteId) {
+        res.status(200).json(note);
+      }
+    });
+  } else {
+    res.status(401).json({ message: "Not logged in" });
+  }
+});
+
+app.put("/notes/:noteId", async (req, res) => {
+  try {
+    if(req.isAuthenticated()){
+      const notes = req.user.notes;
+       notes.map(async (note) => {
+        if(note._id == req.params.noteId){
+          note.title = req.body.title;
+          note.content = req.body.content;
+          await req.user.save();
+          res.status(200).send("Note updated succesfully");
+        }
+       })
+  } else{
+    res.status(401).send("Not logged in");
+  }
+  } catch (error) {
+    res.status(500).send("There was an error");
+  }
+ 
+})
+
+app.delete("/notes/:noteId", async (req, res) => {
+  if (req.isAuthenticated()) {
+    const user = req.user;
+    const noteId = req.params.noteId;
+    await user.notes.pull({ _id: noteId });
+    await user.save();
+    res.status(200).send("Note deleted succesfully");
+  } else {
+    res.status(401).send("Not logged in");
+  }
+});
+
 app.get("/authentication", (req, res) => {
   if (req.isAuthenticated()) {
     res.status(200).send(true);

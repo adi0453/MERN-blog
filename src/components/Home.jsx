@@ -1,44 +1,64 @@
 import React from "react";
-// import { userNotes as blogs} from "./Login";
-import Accordion from "react-bootstrap/Accordion";
-import { redirect, useLoaderData } from "react-router-dom";
-
-// const blogs = []
+import Card from "react-bootstrap/Card";
+import {
+  redirect,
+  useLoaderData,
+  Link,
+  Form,
+} from "react-router-dom";
+import {
+  AiOutlineExpandAlt,
+  AiOutlineEdit,
+  AiOutlineDelete,
+} from "react-icons/ai";
 
 const Home = () => {
   const blogs = useLoaderData();
   return blogs.map((eachBlog) => {
     return (
-      <Accordion key={eachBlog._id} className="m-3">
-        <Accordion.Item >
-          <Accordion.Header>{eachBlog.title}</Accordion.Header>
-          <Accordion.Body>{eachBlog.content}</Accordion.Body>
-        </Accordion.Item>
-      </Accordion>
+      <Card
+        key={eachBlog._id}
+        style={{
+          display: "inline-block",
+          width: "17em",
+          margin: "2em",
+        }}
+      >
+        <Card.Body>
+          <Card.Title>{eachBlog.title}</Card.Title>
+          <Card.Text>
+            {eachBlog.content}
+          </Card.Text>
+          <Link to={eachBlog._id}>
+            <AiOutlineExpandAlt />
+          </Link>
+          <Form method="put" action="edit">
+            <Link to={`${eachBlog._id}/edit`}>
+              <AiOutlineEdit />
+            </Link>
+          </Form>
+          <Link to={`${eachBlog._id}/delete`}>
+            <AiOutlineDelete />
+          </Link>
+        </Card.Body>
+      </Card>
     );
   });
 };
 
-// const Home = () => {
-//   const blogs = useLoaderData();
-//   return(
-//     console.log(blogs)
-//   )
-// }
 
-export async function blogLoader() {
-  const response = await fetch("http://localhost:5000/notes",{
+export async function allBlogsLoader() {
+  const response = await fetch("http://localhost:5000/notes", {
     method: "GET",
-    headers:{
-      "Content-Type": "application/json"
+    headers: {
+      "Content-Type": "application/json",
     },
     credentials: "include",
-  })
-  if(response.status === 401){
-    return redirect("/auth/login")
+  });
+  if (response.status === 401) {
+    return redirect("/auth/login");
   }
   return response.json();
 }
-
 
 export default Home;
