@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Form as RouterForm, redirect, useLoaderData } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function Edit() {
     const blog = useLoaderData();
@@ -62,8 +63,10 @@ export async function blogEditAction({params, request}) {
         })
     });
     if(blog.status === 200){
+        toast.success('Note Updated Successfully')
         return redirect("/home")
     }
+    toast.error('Something went wrong, Please try again')
     return null;
 }
 

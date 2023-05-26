@@ -3,6 +3,7 @@ import { Form as RouterForm } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { redirect } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function SignUp() {
   return (
@@ -40,8 +41,10 @@ export async function signupAction({ request }) {
     body: JSON.stringify({ username: formData.get("username"), password: formData.get("password")}),
   })
   if(signUp.status === 200){
+    toast.success('Sign-up Successful')
     return redirect("/auth/login")
   }
+  toast.error('Something went wrong, Please try again')
   return("/auth/signup")
    
 }

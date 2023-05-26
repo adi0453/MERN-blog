@@ -1,25 +1,27 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import AddBlog, { blogAction } from "./components/AddBlog";
-import NavigationBar from "./components/NavigationBar";
+import NavigationBar, {barLoader} from "./components/NavigationBar";
 import Contact from "./components/Contact";
 import Home, { allBlogsLoader } from "./components/Home";
 import Authenticate from "./components/Authenticate";
 import SignUp, { signupAction } from "./components/SignUp";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, useNavigation } from "react-router-dom";
 import Login, { loginAction } from "./components/Login";
 import Blog, { blogLoader, blogDeleteAction } from "./components/Blog";
 // import {signUp as userAction } from './backend'
 import Edit, {editLoader, blogEditAction} from "./components/Edit";
+import LoadBar from "./components/LoadingBar";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <NavigationBar />,
+    // loader: barLoader,
     children: [
       {
         path: "addBlogs",
-        element: <AddBlog />,
+        element: <AddBlog progress={10}/>,
         action: blogAction,
       },
       {

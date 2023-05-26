@@ -3,6 +3,8 @@ import { Form as RouterForm } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { redirect } from "react-router-dom";
+import { toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 
 export default function Login() {
   return (
@@ -32,7 +34,9 @@ export default function Login() {
 
 export const loginAction = async ({ request }) => {
   const formData = await request.formData();
-  const response = await fetch("http://localhost:5000/api/auth/login", {
+  const response = await 
+  // toast.promise(
+    fetch("http://localhost:5000/api/auth/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -41,10 +45,19 @@ export const loginAction = async ({ request }) => {
     body: JSON.stringify({
       username: formData.get("username"),
       password: formData.get("password"),
-    })
-  }) 
+    }),
+    
+  })
+  // {
+  //   pending: 'Promise is pending',
+  //   success: 'Promise resolved 👌',
+  //   error: 'Promise rejected 🤯'
+  // }
+  // )
   if(response.status === 401){
+    toast.error('Wrong Credentials, Please try again')
     return redirect("/auth/login")
   }
+  toast.success('Login Successful')
   return redirect("/home")
 };

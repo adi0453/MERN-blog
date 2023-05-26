@@ -3,6 +3,7 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Form as RouterForm, redirect } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function AddBlog() {
   return (
@@ -41,7 +42,9 @@ export async function blogAction({ request }) {
     }),
   });
   if(ifAdded.status === 200){
+    toast.success('Note Added Successfully')
     return redirect("/home")
   }
+  toast.error('Something went wrong, Please try again')
   return redirect("/contact");
 }

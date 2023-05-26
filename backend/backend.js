@@ -25,7 +25,7 @@ app.use(
 
 app.use(
   session({
-    secret: "keyboard cat", //dotenv here
+    secret: process.env.SESSION_KEY, //dotenv here
     resave: false,
     saveUninitialized: false,
   })
@@ -37,7 +37,7 @@ app.use(passport.session());
 app.use(express.json());
 
 mongoose.connect(
-  "mongodb+srv://theboss1003:checkout0453@cluster1.xbxtsax.mongodb.net/userDB"
+  process.env.MONGO_URI
 );
 
 const userSchema = new mongoose.Schema({

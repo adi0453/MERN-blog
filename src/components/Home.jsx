@@ -1,16 +1,12 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
-import {
-  redirect,
-  useLoaderData,
-  Link,
-  Form,
-} from "react-router-dom";
+import { redirect, useLoaderData, Link, Form } from "react-router-dom";
 import {
   AiOutlineExpandAlt,
   AiOutlineEdit,
   AiOutlineDelete,
 } from "react-icons/ai";
+import { toast } from "react-toastify";
 
 const Home = () => {
   const blogs = useLoaderData();
@@ -26,9 +22,7 @@ const Home = () => {
       >
         <Card.Body>
           <Card.Title>{eachBlog.title}</Card.Title>
-          <Card.Text>
-            {eachBlog.content}
-          </Card.Text>
+          <Card.Text>{eachBlog.content}</Card.Text>
           <Link to={eachBlog._id}>
             <AiOutlineExpandAlt />
           </Link>
@@ -46,7 +40,6 @@ const Home = () => {
   });
 };
 
-
 export async function allBlogsLoader() {
   const response = await fetch("http://localhost:5000/notes", {
     method: "GET",
@@ -56,6 +49,7 @@ export async function allBlogsLoader() {
     credentials: "include",
   });
   if (response.status === 401) {
+    toast.error("Please login to view your notes.");
     return redirect("/auth/login");
   }
   return response.json();
