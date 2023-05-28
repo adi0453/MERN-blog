@@ -1,58 +1,29 @@
+// import "../index.css";
 import React from "react";
-import Card from "react-bootstrap/Card";
-import { redirect, useLoaderData, Link, Form } from "react-router-dom";
-import {
-  AiOutlineExpandAlt,
-  AiOutlineEdit,
-  AiOutlineDelete,
-} from "react-icons/ai";
-import { toast } from "react-toastify";
+import EachNote from "./EachNote";
+import AddBlogButton from "./AddBlogButton";
+import { Link } from "react-router-dom";
 
 const Home = () => {
-  const blogs = useLoaderData();
-  return blogs.map((eachBlog) => {
-    return (
-      <Card
-        key={eachBlog._id}
-        style={{
-          display: "inline-block",
-          width: "17em",
-          margin: "2em",
-        }}
+  return (
+    <>
+    <EachNote />
+    <Link to = "/addBlogs" id="addButton">
+      <svg
+      // id="addButton"
+        xmlns="http://www.w3.org/2000/svg"
+        width="2em"
+        height="2em"
+        fill="currentColor"
+        className="bi bi-plus-circle-fill"
+        viewBox="0 0 16 16"
+        // style={{ position: "fixed", bottom: "2em", right: "2em", color: "#db7a16", cursor: "pointer", transition: "all 0.3s ease"}}
       >
-        <Card.Body>
-          <Card.Title>{eachBlog.title}</Card.Title>
-          <Card.Text>{eachBlog.content}</Card.Text>
-          <Link to={eachBlog._id}>
-            <AiOutlineExpandAlt />
-          </Link>
-          <Form method="put" action="edit">
-            <Link to={`${eachBlog._id}/edit`}>
-              <AiOutlineEdit />
-            </Link>
-          </Form>
-          <Link to={`${eachBlog._id}/delete`}>
-            <AiOutlineDelete />
-          </Link>
-        </Card.Body>
-      </Card>
-    );
-  });
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
+      </svg>
+      </Link >
+    </>
+  );
 };
-
-export async function allBlogsLoader() {
-  const response = await fetch("http://localhost:5000/notes", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    credentials: "include",
-  });
-  if (response.status === 401) {
-    toast.error("Please login to view your notes.");
-    return redirect("/auth/login");
-  }
-  return response.json();
-}
 
 export default Home;

@@ -3,25 +3,17 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import {
-  Outlet,
-  NavLink,
-} from "react-router-dom";
+import { Outlet, NavLink } from "react-router-dom";
 import AuthButton from "./AuthButton";
-import LoadBar from "./LoadingBar";
-
-import { ToastContainer} from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function NavigationBar() {
-//  toast.success('🦄 Wow so easy!')
   return (
     <>
-      <LoadBar />
       <Navbar bg="light" variant="light">
-        <div></div>
         <Container>
-          <Navbar.Brand>Navbar</Navbar.Brand>
+          <Navbar.Brand>NoteVerse</Navbar.Brand>
           <Nav className="me-auto m-3">
             <NavLink to="home" className={"navlinkStyle"}>
               Home
@@ -34,15 +26,10 @@ export default function NavigationBar() {
             </NavLink>
           </Nav>
         </Container>
-        <NavLink to="auth/signup">
-          <AuthButton signupButton="SignUp" />
-        </NavLink>
-        <NavLink to="auth/login">
-          <AuthButton signinButton="SIgnIn" />
-        </NavLink>
+        <AuthButton/>
       </Navbar>
       <ToastContainer
-        position="top-center"
+        position="bottom-right"
         autoClose={2000}
         hideProgressBar={false}
         newestOnTop={false}
@@ -61,13 +48,3 @@ export default function NavigationBar() {
   );
 }
 
-// export function barLoader() {
-//   const navigation = useNavigation();
-//   const progress =
-//     navigation.state === "submitting"
-//       ? 50
-//       : navigation.state === "loading"
-//       ? 75
-//       : 100;
-//   return progress;
-// }

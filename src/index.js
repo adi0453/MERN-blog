@@ -1,27 +1,27 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import AddBlog, { blogAction } from "./components/AddBlog";
-import NavigationBar, {barLoader} from "./components/NavigationBar";
+import NavigationBar from "./components/NavigationBar";
 import Contact from "./components/Contact";
 import Home, { allBlogsLoader } from "./components/Home";
 import Authenticate from "./components/Authenticate";
 import SignUp, { signupAction } from "./components/SignUp";
-import { createBrowserRouter, RouterProvider, useNavigation } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login, { loginAction } from "./components/Login";
 import Blog, { blogLoader, blogDeleteAction } from "./components/Blog";
-// import {signUp as userAction } from './backend'
-import Edit, {editLoader, blogEditAction} from "./components/Edit";
-import LoadBar from "./components/LoadingBar";
+import Edit, { editLoader, blogEditAction } from "./components/Edit";
+import "./index.css"
+
+
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <NavigationBar />,
-    // loader: barLoader,
     children: [
       {
         path: "addBlogs",
-        element: <AddBlog progress={10}/>,
+        element: <AddBlog />,
         action: blogAction,
       },
       {
@@ -29,7 +29,7 @@ const router = createBrowserRouter([
         element: <Contact />,
       },
       {
-        loader: allBlogsLoader,
+        // loader: allBlogsLoader,
         path: "home",
         element: <Home />,
       },
@@ -42,7 +42,7 @@ const router = createBrowserRouter([
         path: "home/:blogId/edit",
         element: <Edit />,
         action: blogEditAction,
-        loader: editLoader
+        loader: editLoader,
       },
       {
         path: "home/:blogId/delete",
@@ -62,6 +62,10 @@ const router = createBrowserRouter([
             element: <Login />,
             action: loginAction,
           },
+          // {
+          //   path: "logout",
+          //   loader: logoutAction
+          // }
         ],
       },
     ],
@@ -71,6 +75,7 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+   {/* <App/> */}
+    <RouterProvider router={router}/>
   </React.StrictMode>
 );

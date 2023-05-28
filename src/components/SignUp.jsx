@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 
 export default function SignUp() {
   return (
+    <>
     <RouterForm method="post" className="m-3">
       <h1>Sign-up</h1>
       <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -28,6 +29,10 @@ export default function SignUp() {
         Submit
       </Button>
     </RouterForm>
+    {/* <Link to="http://localhost:5000/api/auth/google"> */}
+   <Button variant="primary" type="submit" onClick={()=>{window.open("http://localhost:5000/api/auth/google")}}>Google log-on</Button>
+   {/* </Link> */}
+  </>
   );
 }
 
@@ -47,4 +52,14 @@ export async function signupAction({ request }) {
   toast.error('Something went wrong, Please try again')
   return("/auth/signup")
    
+}
+
+export async function  googleAction() {
+  const response = await fetch("http://localhost:5000/api/auth/google")
+  if(response.status === 200){
+    toast.success('Sign-up Successful')
+    return redirect("/home")
+  }
+  toast.error('Something went wrong, Please try again')
+  return("/auth/signup");
 }
