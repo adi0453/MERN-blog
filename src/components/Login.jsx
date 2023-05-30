@@ -1,33 +1,53 @@
 import React from "react";
-import { Form as RouterForm } from "react-router-dom";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
+import { Form as RouterForm, Link } from "react-router-dom";
 import { redirect } from "react-router-dom";
 import { toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
 
 export default function Login() {
   return (
-    <RouterForm method="post" className="m-3">
-      <h1>Log-in</h1>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" name="username" />
-        <Form.Text className="text-muted">
-          We'll never share your email with anyone else.
-        </Form.Text>
-      </Form.Group>
-
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" name="password" />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
-      </Form.Group>
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
+    <RouterForm method="post" style={{padding: "1em"}} id="container-html">
+      <div >
+        <h2>Login</h2>
+        <div style={{display: "flex", justifyContent: "left", margin: "0.2em 0em", outline:"none"}}>
+          <label htmlFor="username">Email:</label>
+        </div>
+        <div className="input">
+          <i className="fa fa-thin fa-envelope"></i>
+          <input
+            type="email"
+            name="username"
+            id="email"
+            placeholder="Type your email"
+          />
+        </div>
+        <div style={{display: "flex", justifyContent: "left", margin: "0.2em 0em"}}>
+          <label htmlFor="password">Password:</label>
+        </div>
+        <div className="input">
+          <i className="fa fa-light fa-lock"></i>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Type your password"
+          />
+        </div>
+        <div>
+          <button type="submit" className="btn-html">submit</button>
+        </div>
+        <p>or sign-up/Login using</p>
+        <span className="social-icons">
+        <Link to="/auth/signup">
+          <i className=" fa fa-light fa-envelope" style={{margin: '1em'}}></i>
+        </Link>
+        {/* <Link to="http://localhost:5000/api/auth/google"> */}
+        <Link to="http://165.22.208.229:5000/api/auth/google">
+          <i className="fa-brands fa-google" id="google"></i>
+          </Link>
+          <i className="fa-brands fa-twitter" id="twitter" style={{margin: '1em'}}></i>
+          <i className="fa-brands fa-facebook-f" id="facebook"></i>
+        </span>
+    </div>
     </RouterForm>
   );
 }
@@ -36,7 +56,8 @@ export const loginAction = async ({ request }) => {
   const formData = await request.formData();
   const response = await 
   // toast.promise(
-    fetch("http://localhost:5000/api/auth/login", {
+    // fetch("http://localhost:5000/api/auth/login", {
+    fetch("http://165.22.208.229:5000/api/auth/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

@@ -18,7 +18,8 @@ export default function AuthButton(props) {
   });
 
   function logout() {
-    fetch("http://localhost:5000/api/auth/logout", {
+    // fetch("http://localhost:5000/api/auth/logout", {
+    fetch("http://165.22.208.229:5000/api/auth/logout", {
       method: "POST",
       credentials: "include",
     });

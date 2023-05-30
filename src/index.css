@@ -1,20 +1,107 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap");
-
-.navbar {
-  font-family: "Poppins", sans-serif;
-}
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Mukta:wght@300&family=Poppins:wght@200&family=Ubuntu&display=swap');
 
 .navlinkStyle {
   text-decoration: none;
   color: gray;
-  margin: 0 0.7em;
+  margin: 0 0.5em;
+  transition-duration: 1s;
 }
 
-#addButton {
-  position: "fixed";
-  bottom: "2em";
-  right: "2em";
-  color: "orange";
-  cursor: "pointer";
-  transition: "all 0.3s ease";
+.navlinkStyle:hover {
+  color: black;
+  size: 2em;
+}
+
+.bi {
+  position: fixed;
+  bottom: 4em;
+  right: 3em;
+  color: green;
+  cursor: pointer;
+  transition-property: all;
+  transition-duration: 1s;
+  font-size: 1.3em;
+}
+
+.bi:hover {
+  font-size: 1.7em;
+}
+
+#card {
+  background-image: radial-gradient(rgb(237 140 218), rgb(206 155 225));
+  box-shadow: 0.5em 0.5em 0.5em;
+}
+
+#card-content {
+  color: rgb(254 254 254);
+}
+
+#container-html {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  height: 80vh;
+}
+
+#email {
+  color: blue;
+  outline: none;
+  border: none;
+  padding: 0.8em;
+}
+
+#password {
+  outline: none;
+  border: none;
+  padding: 0.8em;
+}
+
+.btn-html {
+  width: 17em;
+  border: none;
+  border-radius: 11em;
+  height: 2em;
+  cursor: pointer;
+  background-image: linear-gradient(130deg, #79bbe1, #da48f9);
+  margin-bottom: 1.5em;
+}
+
+.input {
+  border: none;
+  margin-bottom: 2em;
+  border-bottom: 1px solid gray;
+}
+
+h2 {
+  margin-bottom: 2em;
+}
+
+.fa-brands {
+  cursor: pointer;
+  color: #0d6efd;
+}
+
+.social-icons {
+  color: black;
+}
+
+#full-blog-page{
+  background-image: linear-gradient(45deg, #758db3, transparent);
+  margin: auto;
+  border-radius: 3em;
+}
+
+#blog-body{
+  margin: auto;
+  width: 90vw;
+  font-family: 'Ubuntu', sans-serif
+}
+
+#blog-title{
+  font-size: 2em;
+  font-weight: bold;
+  margin: 0.5em;
+  text-align: center;
+  font-family: 'Lato', sans-serif
 }

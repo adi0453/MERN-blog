@@ -38,6 +38,7 @@ app.use(passport.session());
 app.use(express.json());
 
 mongoose.connect(process.env.MONGO_URI);
+// mongoose.connect(process.env.ADMIN_MONGODB_URI);
 
 const notesSchema = new mongoose.Schema({ title: String, content: String });
 

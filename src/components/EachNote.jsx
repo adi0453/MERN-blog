@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Card from "react-bootstrap/Card";
-import { redirect, useLoaderData, Link, Form, useNavigate  } from "react-router-dom";
+import { Link, Form, useNavigate  } from "react-router-dom";
 import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
 
 export default function EachNote() {
@@ -8,7 +8,8 @@ export default function EachNote() {
     const navigate = useNavigate();
     useEffect(() => {
         const fetchBlog = async () => {
-            const response = await fetch("http://localhost:5000/notes", {
+            // const response = await fetch("http://localhost:5000/notes", {
+            const response = await fetch("http://165.22.208.229:5000/notes", {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -35,15 +36,15 @@ export default function EachNote() {
         style={{
           display: "inline-block",
           width: "17em",
-          margin: "2em",
+          margin: "1.7em",
         }}
       >
-        <Card.Body>
+        <Card.Body  id="card">
           <div>
-            <Card.Title>{eachBlog.title}</Card.Title>
+            <Card.Title id="card-title">{eachBlog.title}</Card.Title>
           </div>
           <div>
-            <Card.Text>
+            <Card.Text id="card-content">
               {eachBlog.content.substring(0, 100) + "..."}
               <Link to={eachBlog._id}>Read more</Link>
             </Card.Text>

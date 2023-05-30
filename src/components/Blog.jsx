@@ -3,7 +3,8 @@ import { useLoaderData, redirect } from "react-router-dom";
 import { toast } from "react-toastify";
 
 export async function blogLoader({ params }) {
-  const blog = await fetch("http://localhost:5000/notes/" + params.blogId, {
+  // const blog = await fetch("http://localhost:5000/notes/" + params.blogId, {
+  const blog = await fetch("http://165.22.208.229:5000/notes/" + params.blogId, {
     method: "GET",
     credentials: "include",
     headers: {
@@ -14,7 +15,8 @@ export async function blogLoader({ params }) {
 }
 
 export async function blogDeleteAction({ params }) {
-  const status = await fetch("http://localhost:5000/notes/" + params.blogId, {
+  // const status = await fetch("http://localhost:5000/notes/" + params.blogId, {
+  const status = await fetch("http://165.22.208.229:5000/notes/" + params.blogId, {
     method: "DELETE",
     credentials: "include",
     headers: {
@@ -32,9 +34,9 @@ export async function blogDeleteAction({ params }) {
 export default function Blog() {
   const note = useLoaderData();
   return (
-    <div>
-      <h1>{note.title}</h1>
-      <p>{note.content}</p>
+    <div id="full-blog-page">
+      <h1 id="blog-title">{note.title}</h1>
+      <p id="blog-body">{note.content}</p>
     </div>
   );
 }

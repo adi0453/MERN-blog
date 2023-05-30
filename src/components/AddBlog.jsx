@@ -30,7 +30,8 @@ export default function AddBlog() {
 
 export async function blogAction({ request }) {
   const data = await request.formData();
-  const ifAdded = await fetch("http://localhost:5000/notes/add", {
+  // const ifAdded = await fetch("http://localhost:5000/notes/add", {
+  const ifAdded = await fetch("http://165.22.208.229:5000/notes/add", {
     method: "POST",
     credentials: "include",
     headers:{
