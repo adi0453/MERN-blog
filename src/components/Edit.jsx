@@ -36,8 +36,8 @@ function Edit() {
 }
 
 export async function editLoader({ params }) {
-    // const blog = await fetch("http://localhost:5000/notes/" + params.blogId, {
-    const blog = await fetch("http://165.22.208.229:5000/notes/" + params.blogId, {
+    const blog = await fetch("http://localhost:5000/notes/" + params.blogId, {
+    // const blog = await fetch("http://165.22.208.229:5000/notes/" + params.blogId, {
         method: "GET",
         credentials: "include",
         headers: {
@@ -52,8 +52,8 @@ export async function editLoader({ params }) {
 
 export async function blogEditAction({params, request}) {
     const data = await request.formData();
-    // const blog = await fetch("http://localhost:5000/notes/" + params.blogId, {
-    const blog = await fetch("http://165.22.208.229:5000/notes/" + params.blogId, {
+    const blog = await fetch("http://localhost:5000/notes/" + params.blogId, {
+    // const blog = await fetch("http://165.22.208.229:5000/notes/" + params.blogId, {
         method: "PUT",
         credentials: "include",
         headers: {

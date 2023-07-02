@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 export default function Login() {
   return (
     <RouterForm method="post" style={{padding: "1em"}} id="container-html">
-      <div >
+      <div id="auth-content">
         <h2>Login</h2>
         <div style={{display: "flex", justifyContent: "left", margin: "0.2em 0em", outline:"none"}}>
           <label htmlFor="username">Email:</label>
@@ -40,8 +40,8 @@ export default function Login() {
         <Link to="/auth/signup">
           <i className=" fa fa-light fa-envelope" style={{margin: '1em'}}></i>
         </Link>
-        {/* <Link to="http://localhost:5000/api/auth/google"> */}
-        <Link to="http://165.22.208.229:5000/api/auth/google">
+        <Link to="http://localhost:5000/api/auth/google">
+        {/* <Link to="http://165.22.208.229:5000/api/auth/google"> */}
           <i className="fa-brands fa-google" id="google"></i>
           </Link>
           <i className="fa-brands fa-twitter" id="twitter" style={{margin: '1em'}}></i>
@@ -56,8 +56,8 @@ export const loginAction = async ({ request }) => {
   const formData = await request.formData();
   const response = await 
   // toast.promise(
-    // fetch("http://localhost:5000/api/auth/login", {
-    fetch("http://165.22.208.229:5000/api/auth/login", {
+    fetch("http://localhost:5000/api/auth/login", {
+    // fetch("http://165.22.208.229:5000/api/auth/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

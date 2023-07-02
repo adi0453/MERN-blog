@@ -1,4 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato&family=Mukta:wght@300&family=Poppins:wght@200&family=Ubuntu&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&family=Lato&family=Mukta:wght@300&family=Nunito+Sans&family=Poppins:wght@200&family=Ubuntu&display=swap');
+
+*{
+  margin:0;
+  padding: 0;
+}
+
+.root-bg{
+  background-color: orange;
+  height: 100vh;
+  width: 100vw;
+}
 
 .navlinkStyle {
   text-decoration: none;
@@ -41,7 +52,13 @@
   display: flex;
   justify-content: center;
   text-align: center;
-  height: 80vh;
+  height: 25em;
+  width: 85em;
+}
+
+#auth-content{
+  display: flex;
+  flex-direction: column;
 }
 
 #email {
@@ -75,6 +92,7 @@
 
 h2 {
   margin-bottom: 2em;
+  margin-top: 7em;
 }
 
 .fa-brands {
@@ -104,4 +122,342 @@ h2 {
   margin: 0.5em;
   text-align: center;
   font-family: 'Lato', sans-serif
+}
+
+#entire-addBlog{
+  height: 100vh;
+  width: 100vw;
+  /* background-color: #ffebe9; */
+  background-image: linear-gradient(45deg, #fd9b3d, transparent);
+  /* background-image: url(https://png.pngtree.com/png-vector/20200907/ourmid/pngtree-abstract-modern-blue-purple-wave-background-png-image_2339850.jpg);
+  background-repeat: no-repeat;
+  background-size: cover; */
+  border-radius: 0.4em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#addBlog-form{
+  height: 85vh;
+  width: 40vw;
+  background-image: linear-gradient(173deg, #f3bd5a, transparent);
+  padding: 0em 3em;
+  border-radius: 2em;
+}
+
+#addBlog-form input{
+  width: 28em;
+  margin: 0.8em 0em;
+  border: 0.2em solid gray;
+  border-radius: 0.8em;
+  height: 3em;
+ 
+  padding: 0.4em
+}
+
+#addBlog-form textarea{
+  width: 28em;
+  border: 0.2em solid gray;
+  border-radius: 0.8em;
+  padding: 0.4em
+}
+
+.blog-default{
+  text-align: center;
+  margin-top: 2em ;
+  margin-bottom: 1.5em;
+  color: navy;
+}
+
+#blog-submit{
+  display: block;
+  margin: auto;
+  width: 15em;
+  height: 3em;
+  border: 0.1em solid green;
+  background-color: white;
+  border-radius: 1em;
+  margin-top: 1em;
+  cursor: pointer;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+ #entire-addBlog button{
+  /* transition: all;
+  transition-duration: 1s; */
+  padding: 0.6em;
+  background-color: rgb(124, 216, 124);
+}
+
+#container {
+  background-color: lightblue;
+  height: 5.5em;
+  display: flex;
+  align-items: center;
+
+}
+
+#container ul {
+  display: flex;
+  text-decoration: none;
+  list-style-type: none;
+  margin-left: 1em;
+}
+
+.menu-items {
+  padding: 0em 1em;
+  text-decoration: none;
+  color: darkslategray;
+}
+
+#search-bar {
+  margin-left: 32em;
+  height: 1.8em;
+  border: none;
+  border-radius: 0.4em;
+  padding: 0.2em;
+  background: none;
+  border-bottom: 1px solid gray;
+}
+
+#search-bar:hover {
+  box-shadow: 0.1em 0.1em;
+}
+
+.fa-user {
+  margin-left: 2em;
+  cursor: pointer;
+}
+
+#brand-logo {
+  margin-left: 2em;
+  font-size: 2.5em;
+  margin-left: 1em;
+}
+
+#fav {
+  margin-left: 2em;
+  cursor: pointer;
+}
+
+#auth-button {
+  margin-left: 1.3em;
+  height: 2.2em;
+  width: 5em;
+  border-radius: 0.4em;
+  background-color: #f99898;
+  transition: all;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  outline: none;
+}
+
+#auth-button:hover {
+  background-color: #e72323;
+}
+
+#hamburger {
+  display: none;
+  margin-left: 1.3em;
+  width: 2em;
+
+}
+
+.hamburger-lines {
+  border: 0.1em solid black;
+  margin: 0.3em 0em;
+  width: 1.5em;
+
+}
+
+#sidebar {
+  height: 1000vh;
+  width: 24em;
+  background-color: peachpuff;
+  transition: all 0.3s ease-out;
+}
+
+#sidebar ul {
+  margin-left: 4em;
+  margin-top: 2em;
+  list-style-type: none;
+}
+
+#sidebar ul li {
+  font-size: 1.5em;
+  padding: 1em 0em;
+}
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+}
+
+@media (min-width:0px) and (max-width: 1326px) {
+  #container {
+    width: 85em;
+  }
+}
+
+@media (min-width:550px) and (max-width: 800px) {
+  .menu-items {
+    font-size: 1.5em;
+  }
+
+  #container {
+    width: 96.5em;
+    height: 8em;
+  }
+
+  #search-bar {
+    margin-left: 26em;
+  }
+
+  #fav {
+    font-size: 1.5em;
+  }
+
+  .fa-user {
+    font-size: 1.5em;
+  }
+
+  #auth-button {
+    margin-left: 3em;
+    height: 3em;
+    width: 7em;
+  }
+
+  #brand-logo {
+    font-size: 3em;
+  }
+
+  #container-html{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    height: 60em;
+    width: 96em;
+  }
+}
+
+@media (min-width: 340px) and (max-width: 550px) {
+  #container {
+    height: 9em;
+  }
+
+  #hamburger {
+    display: block;
+    width: 3em;
+  }
+
+  .hamburger-lines {
+    width: 2.2em;
+    margin: 0.5em 0em;
+  }
+
+  .menu-items {
+    display: none;
+  }
+
+  #search-bar {
+    margin-left: 7em;
+    height: 4em;
+    width: 11em;
+  }
+
+  #brand-logo {
+    font-size: 5em;
+    margin-left: 7em;
+  }
+
+  #auth-button {
+    height: 3.9em;
+    width: 8em;
+  }
+
+  #auth-button p {
+    font-size: 1.5em;
+  }
+
+  .fa-user {
+    font-size: 1.8em;
+    margin-left: 1.5em;
+  }
+
+  #fav {
+    font-size: 1.8em;
+  }
+
+  #container-html{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    height: 60em;
+    width: 85em;
+  }
+}
+
+@media (min-width:0px) and (max-width:340px) {
+  #hamburger {
+    display: block;
+    width: 3em;
+  }
+
+  .menu-items {
+    display: none;
+
+  }
+
+  .hamburger-lines {
+    width: 2em;
+    margin: 0.5em 0em;
+  }
+
+  #search-bar {
+    margin-left: 11em;
+    height: 3.5em;
+    width: 13em;
+  }
+
+  #brand-logo {
+    font-size: 5em;
+    margin-left: 7em;
+  }
+
+  #container {
+    height: 9em;
+  }
+
+  #fav {
+    font-size: 2em;
+  }
+
+  .fa-user {
+    font-size: 2em;
+    margin-left: 1em;
+  }
+
+  #auth-button {
+    height: 4em;
+    width: 8em;
+  }
+}
+
+@media (min-width: 800px){
+  #container-html {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    height: 25em;
+    width: 85em;
+}
 }

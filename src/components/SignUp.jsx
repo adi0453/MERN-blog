@@ -53,8 +53,8 @@ export default function SignUp() {
 
 export async function signupAction({ request }) {
   const formData = await request.formData();
-  // const signUp = await fetch("http://localhost:5000/api/auth/signup", {
-  const signUp = await fetch("http://165.22.208.229:5000/api/auth/signup", {
+  const signUp = await fetch("http://localhost:5000/api/auth/signup", {
+  // const signUp = await fetch("http://165.22.208.229:5000/api/auth/signup", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

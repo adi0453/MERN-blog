@@ -8,8 +8,8 @@ export default function EachNote() {
     const navigate = useNavigate();
     useEffect(() => {
         const fetchBlog = async () => {
-            // const response = await fetch("http://localhost:5000/notes", {
-            const response = await fetch("http://165.22.208.229:5000/notes", {
+            const response = await fetch("http://localhost:5000/notes", {
+            // const response = await fetch("http://165.22.208.229:5000/notes", {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
